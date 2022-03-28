@@ -30,15 +30,14 @@ public class PlayerBehavior : MonoBehaviour
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
-
-            if (moveHorizontal != 0 || moveVertical != 0)
+            if (Input.GetKey(KeyCode.E))
             {
-                if (Input.GetKey(KeyCode.E))
-                {
-                    anim.SetInteger("Movement", 3);
-                    AudioSource.PlayClipAtPoint(sword, transform.position);
-
-                }
+                anim.SetInteger("Movement", 3);
+                AudioSource.PlayClipAtPoint(sword, transform.position);
+            }
+            else if (moveHorizontal != 0 || moveVertical != 0)
+            {
+                
 
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
@@ -64,12 +63,6 @@ public class PlayerBehavior : MonoBehaviour
             else
             {
                 anim.SetInteger("Movement", 0);
-            }
-
-            if (Input.GetKey(KeyCode.E))
-            {
-                anim.SetInteger("Movement", 3);
-
             }
         }
         else
