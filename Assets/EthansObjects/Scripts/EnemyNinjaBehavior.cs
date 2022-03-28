@@ -38,7 +38,8 @@ public class EnemyNinjaBehavior : MonoBehaviour
 
         currentState = EnemyState.Idle;
 
-        gunTip = GameObject.Find("GunTip");
+        gunTip = gameObject.transform.Find
+            ("Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/SM_Wep_Revolver_01/GunTip").gameObject;
     }
 
     // Update is called once per frame

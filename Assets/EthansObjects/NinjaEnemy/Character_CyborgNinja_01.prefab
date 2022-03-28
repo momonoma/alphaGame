@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 6494132684340861379}
   m_Layer: 0
   m_Name: Character_CyborgNinja_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1504,12 +1504,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 8439928586570127782, guid: be813cd1700cfaa45890a7df7adb2085, type: 3}
   attackDistance: 10
   alertDistance: 20
   attackRate: 2
   anim: {fileID: 0}
   gunTip: {fileID: 0}
+  bulletSpeed: 100
   currentState: 0
 --- !u!1 &3378040219486394311
 GameObject:

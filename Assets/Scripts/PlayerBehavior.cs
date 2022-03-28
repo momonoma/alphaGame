@@ -95,4 +95,12 @@ public class PlayerBehavior : MonoBehaviour
             FindObjectOfType<LevelManager>().LevelLost();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Projectile"))
+        {
+            TakeDamage(10);
+        }
+    }
 }
