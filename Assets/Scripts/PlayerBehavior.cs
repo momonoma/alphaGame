@@ -49,7 +49,7 @@ public class PlayerBehavior : MonoBehaviour
                     anim.SetInteger("Movement", 1);
                 }
 
-                input = new Vector3(moveHorizontal, 0, moveVertical);
+                input = Quaternion.Euler(0, 45, 0) * new Vector3(moveHorizontal, 0, moveVertical);
                 input.Normalize();
                 moveDirection = input;
                 moveDirection.y -= gravity * Time.deltaTime;
