@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 5397245868255357280}
   - component: {fileID: 5397245868255357284}
   - component: {fileID: -893912248329258863}
-  - component: {fileID: 8616847381910413906}
   m_Layer: 0
-  m_Name: SM_Wep_Sword_01
+  m_Name: Sword
   m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +31,8 @@ Transform:
   m_LocalRotation: {x: 0.08385757, y: -0.053905282, z: 0.65070003, w: -0.7527626}
   m_LocalPosition: {x: 0.031295, y: 0.0070639, z: -0.0048814}
   m_LocalScale: {x: 0.05957551, y: 0.05957551, z: 0.059575535}
-  m_Children: []
+  m_Children:
+  - {fileID: 1882553924593502543}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -176.784, y: -169.013, z: 98.009}
@@ -94,10 +94,10 @@ BoxCollider:
   m_GameObject: {fileID: 5396243299620787104}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.40401086, y: 1.2980331, z: 0.5183895}
-  m_Center: {x: -0.014811391, y: 0.55100566, z: 0.013431919}
+  m_Size: {x: 0.1658224, y: 1.2434632, z: 0.25124454}
+  m_Center: {x: -0.039936367, y: 0.52372354, z: -0.0019231518}
 --- !u!114 &5397245868255357284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,15 +128,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c4dba049ed874478b1c9fc65141a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotDeath: {fileID: 8300000, guid: ae968c3ad31f5a541a0bc4b1c02cb0a3, type: 3}
---- !u!96 &8616847381910413906
+  weapon: {fileID: 5397245868255357280}
+--- !u!1 &6215788142996392496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1882553924593502543}
+  - component: {fileID: 5396915890841248513}
+  m_Layer: 0
+  m_Name: Tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1882553924593502543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215788142996392496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.046, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5401745302326151658}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!96 &5396915890841248513
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396243299620787104}
+  m_GameObject: {fileID: 6215788142996392496}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -149,7 +180,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: afd22cd63841d7c4db4ef44c5cd09fda, type: 2}
+  - {fileID: 2100000, guid: 45c2b2d1ae03ec740826401166ee2ff8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,7 +210,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.19318008
+        value: 0.29375076
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -218,8 +249,8 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 6
-    numCapVertices: 6
+    numCornerVertices: 0
+    numCapVertices: 0
     alignment: 0
     textureMode: 0
     shadowBias: 0.5

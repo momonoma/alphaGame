@@ -15,6 +15,7 @@ public class PlayerBehavior : MonoBehaviour
     int playerHealth = 100;
     public AudioClip sword;
     public AudioClip hurt;
+    public bool attacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,42 +29,18 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (playerHealth > 0)
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
+            Move();
             if (Input.GetKey(KeyCode.E))
             {
+                attacking = true;
                 anim.SetInteger("Movement", 3);
                 AudioSource.PlayClipAtPoint(sword, transform.position);
             }
-            else if (moveHorizontal != 0 || moveVertical != 0)
-            {
-                
-
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    anim.SetInteger("Movement", 2);
-                    moveSpeed = 6;
-                }
-                else
-                {
-                    anim.SetInteger("Movement", 1);
-                }
-
-                input = Quaternion.Euler(0, 45, 0) * new Vector3(moveHorizontal, 0, moveVertical);
-                input.Normalize();
-                moveDirection = input;
-                moveDirection.y -= gravity * Time.deltaTime;
-                _controller.Move(moveDirection * Time.deltaTime);
-                if (moveDirection != Vector3.zero)
-                {
-                    transform.forward = moveDirection;
-                }
-
-            }
             else
             {
-                anim.SetInteger("Movement", 0);
+                attacking = false;
             }
+
         }
         else
         {
@@ -72,9 +49,42 @@ public class PlayerBehavior : MonoBehaviour
 
     }
 
+    private void Move()
+    {
+        attacking = false;
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        if (moveHorizontal != 0 || moveVertical != 0)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                anim.SetInteger("Movement", 2);
+                moveSpeed = 6;
+            }
+            else
+            {
+                anim.SetInteger("Movement", 1);
+            }
+
+            input = Quaternion.Euler(0, 45, 0) * new Vector3(moveHorizontal, 0, moveVertical);
+            input.Normalize();
+            moveDirection = input;
+            moveDirection.y -= gravity * Time.deltaTime;
+            _controller.Move(moveDirection * Time.deltaTime);
+            if (moveDirection != Vector3.zero)
+            {
+                transform.forward = moveDirection;
+            }
+        }
+        else
+        {
+            anim.SetInteger("Movement", 0);
+        }
+    }
+
     public void TakeDamage(int dmg)
     {
-        if(playerHealth > dmg)
+        if (playerHealth > dmg)
         {
             playerHealth = playerHealth - dmg;
             AudioSource.PlayClipAtPoint(hurt, transform.position);
@@ -91,7 +101,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Projectile"))
+        if (other.CompareTag("Projectile"))
         {
             TakeDamage(10);
         }
