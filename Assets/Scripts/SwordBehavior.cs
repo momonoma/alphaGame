@@ -14,6 +14,7 @@ public class SwordBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (GameObject.FindObjectOfType<PlayerBehavior>().attacking)
         {
             weapon.enabled = true;
@@ -22,7 +23,7 @@ public class SwordBehavior : MonoBehaviour
         {
             weapon.enabled = false;
         }
-
+        
     }
 
     private void OnTriggerEnter(Collider other)

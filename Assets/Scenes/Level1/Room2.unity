@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.045870975, g: 0.03592938, b: 0.01872046, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1071,6 +1071,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8578351850319986055, guid: ece5316ef02f260419d3e045c6161515, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578351850319986055, guid: ece5316ef02f260419d3e045c6161515, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ece5316ef02f260419d3e045c6161515, type: 3}
 --- !u!1001 &7171115042811919468
@@ -1149,10 +1157,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1070127481336615554, guid: 04c97d9ad2e231e4c82d6b93cf1e9e84, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6a92cc9bce4167f4289e1d51eb3c37c8, type: 2}
     - target: {fileID: 1121048575937094994, guid: 04c97d9ad2e231e4c82d6b93cf1e9e84, type: 3}
       propertyPath: m_Name
       value: RobotEnemy Variant
@@ -1201,9 +1205,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7136678301663573954, guid: 04c97d9ad2e231e4c82d6b93cf1e9e84, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8251278722054029571, guid: 04c97d9ad2e231e4c82d6b93cf1e9e84, type: 3}
       propertyPath: m_StoppingDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04c97d9ad2e231e4c82d6b93cf1e9e84, type: 3}

@@ -11,9 +11,12 @@ public class EnemyAI : MonoBehaviour
     public int enemyDamage = 10;
     public float attackDistance = 2f;
     public Animator anim;
+    public Transform eyes;
+    public float fieldOfView = 45f;
+    public float sightDistance = 10f;
+    public PlayerBehavior ph;
 
     float attackTimer = 0f;
-    //PlayerHealth ph;
 
     public enum FSMstate
     {
@@ -36,6 +39,8 @@ public class EnemyAI : MonoBehaviour
         currentState = FSMstate.IDLE;
         //ph = player.GetComponent<PlayerHealth>();
         anim = GetComponent<Animator>();
+        eyes = transform.Find("EnemyEyes");
+        ph = player.GetComponent<PlayerBehavior>();
     }
 
     // Update is called once per frame
@@ -103,7 +108,7 @@ public class EnemyAI : MonoBehaviour
 
         if (attackTimer > attackDelay)
         {
-            //ph.TakeDamage(enemyDamage);
+            ph.TakeDamage(enemyDamage);
             attackTimer = 0;
         }
 
@@ -119,7 +124,14 @@ public class EnemyAI : MonoBehaviour
 
     bool SightAlert()
     {
-        return false;
+        if(playerDistance < sightDistance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     void Die()
@@ -134,4 +146,11 @@ public class EnemyAI : MonoBehaviour
     {
         currentState = FSMstate.DEAD;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(eyes.position, sightDistance);
+    }
+
 }
