@@ -1510,7 +1510,7 @@ MonoBehaviour:
   attackRate: 2
   anim: {fileID: 0}
   gunTip: {fileID: 0}
-  bulletSpeed: 100
+  bulletSpeed: 1000
   currentState: 0
 --- !u!1 &3378040219486394311
 GameObject:

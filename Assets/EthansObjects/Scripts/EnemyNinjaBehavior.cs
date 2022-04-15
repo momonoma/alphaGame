@@ -136,6 +136,14 @@ public class EnemyNinjaBehavior : MonoBehaviour
         _rb.AddForce(transform.forward * bulletSpeed, ForceMode.VelocityChange);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Sword"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
