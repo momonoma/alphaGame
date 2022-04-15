@@ -16,6 +16,8 @@ public class PlayerBehavior : MonoBehaviour
     public AudioClip sword;
     public AudioClip hurt;
     public bool attacking = false;
+    public float dashSpeed = 50f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,14 +29,18 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Base.Attack")){
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Base.Attack"))
+        {
             attacking = true;
-        } else {
+        }
+        else
+        {
             attacking = false;
         }
         if (playerHealth > 0)
         {
             Move();
+            Dash();
             if (Input.GetKey(KeyCode.E))
             {
                 // attacking = true;
@@ -56,16 +62,7 @@ public class PlayerBehavior : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
         if (moveHorizontal != 0 || moveVertical != 0)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                anim.SetInteger("Movement", 2);
-                moveSpeed = 6;
-            }
-            else
-            {
-                anim.SetInteger("Movement", 1);
-            }
-
+            anim.SetInteger("Movement", 1);
             input = Quaternion.Euler(0, 45, 0) * new Vector3(moveHorizontal, 0, moveVertical);
             input.Normalize();
             moveDirection = input;
@@ -104,6 +101,25 @@ public class PlayerBehavior : MonoBehaviour
         if (other.CompareTag("Projectile"))
         {
             TakeDamage(10);
+        }
+    }
+
+    private void Dash()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            anim.SetInteger("Movement", 2);
+            StartCoroutine(DashCoroutine());
+        }
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        float startTime = Time.time;
+        while (Time.time < startTime + 0.15f)
+        {
+            _controller.Move(transform.forward * dashSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 }
