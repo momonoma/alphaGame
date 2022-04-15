@@ -28,6 +28,7 @@ public class EnterExitBehavior : MonoBehaviour
         if (LevelManager.enemiesDead && touchingDoor)
         {
             AudioSource.PlayClipAtPoint(warp, transform.position);
+            Debug.Log("Entering next level");
             FindObjectOfType<LevelManager>().LoadNextLevel();
         }
     }

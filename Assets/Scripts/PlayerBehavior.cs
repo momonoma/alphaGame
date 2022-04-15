@@ -9,7 +9,6 @@ public class PlayerBehavior : MonoBehaviour
     public float moveSpeed;
     public float gravity = 9.81f;
     Vector3 input, moveDirection;
-    public float airControl = 10f;
     public Slider healthSlide;
     Animator anim;
     int playerHealth = 100;
@@ -67,7 +66,7 @@ public class PlayerBehavior : MonoBehaviour
             input.Normalize();
             moveDirection = input;
             moveDirection.y -= gravity * Time.deltaTime;
-            _controller.Move(moveDirection * Time.deltaTime);
+            _controller.Move(moveDirection * moveSpeed * Time.deltaTime);
             if (moveDirection != Vector3.zero)
             {
                 transform.forward = moveDirection;

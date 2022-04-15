@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public static bool enemiesDead = false;
     public static bool bossDead = false;
     public static bool playerDead = false;
+    public GameObject finalExit;
     public AudioClip win;
     public AudioClip lose;
     public Text statusText;
@@ -42,7 +43,7 @@ public class LevelManager : MonoBehaviour
 
             if (bossDead)
             {
-                LevelWon();
+                finalExit.SetActive(true);
             }
 
             if (playerDead)

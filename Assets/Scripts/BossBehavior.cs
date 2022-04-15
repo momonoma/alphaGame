@@ -7,7 +7,6 @@ public class BossBehavior : MonoBehaviour
     Animator anim;
     int TotalHealth = 100;
     Transform player;
-    int range = 10;
     public GameObject projectile;
     [SerializeField] private float cooldown = 5;
     private float cooldownTimer;
