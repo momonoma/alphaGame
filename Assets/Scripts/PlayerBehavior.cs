@@ -27,20 +27,20 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Base.Attack")){
+            attacking = true;
+        } else {
+            attacking = false;
+        }
         if (playerHealth > 0)
         {
             Move();
             if (Input.GetKey(KeyCode.E))
             {
-                attacking = true;
+                // attacking = true;
                 anim.SetInteger("Movement", 3);
                 AudioSource.PlayClipAtPoint(sword, transform.position);
             }
-            else
-            {
-                attacking = false;
-            }
-
         }
         else
         {
@@ -51,7 +51,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Move()
     {
-        attacking = false;
+        // attacking = false;
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         if (moveHorizontal != 0 || moveVertical != 0)
