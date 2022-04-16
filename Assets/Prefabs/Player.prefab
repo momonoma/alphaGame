@@ -3765,11 +3765,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255fd607c1a863e41bc744ca1bfd7a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 6
   gravity: 9.81
   healthSlide: {fileID: 0}
   sword: {fileID: 8300000, guid: a0d95f7142872d148bcfd56519a8c74f, type: 3}
   hurt: {fileID: 8300000, guid: 8b441f7802a75b842876fb68018ca0b6, type: 3}
+  dash: {fileID: 8300000, guid: c6fed3f6ae7c9ab40ac7f9a26c221ca9, type: 3}
   attacking: 0
   dashSpeed: 50
 --- !u!82 &5764616660111779420

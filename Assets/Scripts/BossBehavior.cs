@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossBehavior : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BossBehavior : MonoBehaviour
     public GameObject projectile;
     [SerializeField] private float cooldown = 5;
     private float cooldownTimer;
+    public Slider health;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class BossBehavior : MonoBehaviour
     {
         int tempHealth = TotalHealth - dmg;
         TotalHealth = tempHealth;
+        health.value = TotalHealth;
         Debug.Log(TotalHealth);
     }
 

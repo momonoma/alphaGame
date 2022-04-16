@@ -14,6 +14,7 @@ public class PlayerBehavior : MonoBehaviour
     int playerHealth = 100;
     public AudioClip sword;
     public AudioClip hurt;
+    public AudioClip dash;
     public bool attacking = false;
     public float dashSpeed = 50f;
 
@@ -115,6 +116,7 @@ public class PlayerBehavior : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         float startTime = Time.time;
+        AudioSource.PlayClipAtPoint(dash, transform.position);
         while (Time.time < startTime + 0.15f)
         {
             _controller.Move(transform.forward * dashSpeed * Time.deltaTime);

@@ -111,8 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  moveSpeed: 2
-  range: 10
+  moveSpeed: 4
+  range: 20
 --- !u!114 &917378680521718224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 0.5
+  outlineWidth: 0.72
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
