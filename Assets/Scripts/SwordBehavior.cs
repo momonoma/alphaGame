@@ -28,11 +28,13 @@ public class SwordBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        /*
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("Died");
             other.gameObject.SetActive(false);
         }
+        */
         if (other.CompareTag("Boss"))
         {
             FindObjectOfType<BossBehavior>().TakeDamage(10);
