@@ -14,12 +14,14 @@ public class TutorialDialogue : MonoBehaviour
         "To get around quicker use LSHIFT to dash. Try it out now.",
         "That was easy enough, now lets try attacking. Hold E to attack.",
         "Here are some bots to practice against.",
+        "Each level will have some enemies, once you destory all the enemies a door, like this, will allow you to move on",
         "Congrats, seems like you adjusted to the virtual world.  Try starting a new game"
     };
 
     public Button nextButton;
     public GameObject dummyEnemy;
     public static int dummyCount = 2;
+    public GameObject door;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,10 @@ public class TutorialDialogue : MonoBehaviour
         if(sentIndex == 4)
         {
             SpawnBots();
+        }
+        if(sentIndex == 5)
+        {
+            door.SetActive(true);
         }
 
         if (sentIndex == sentences.Length - 1)

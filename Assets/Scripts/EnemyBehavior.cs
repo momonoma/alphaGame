@@ -46,5 +46,12 @@ void Start()
         {
             FindObjectOfType<PlayerBehavior>().TakeDamage(10);
         }
+        
+        if(other.CompareTag("Sword"))
+        {
+            Destroy(gameObject);
+        }
     }
+
+    
 }
