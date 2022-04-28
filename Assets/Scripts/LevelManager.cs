@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
     public AudioClip win;
     public AudioClip lose;
     public Text statusText;
+    public GameObject status;
+    public bool gameWon = false;
 
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
 
-
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class LevelManager : MonoBehaviour
         if (!isGameOver)
         {
             int enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-            if (SceneManager.GetActiveScene().buildIndex == 6 && enemiesDead)
+            if (gameWon)
             {
                 LevelWon();
             }
@@ -70,20 +72,21 @@ public class LevelManager : MonoBehaviour
 
     public void LevelWon()
     {
-        setGameOverStatus("Level Clear!", win);
+        setGameOverStatus("Game Clear!", win);
     }
 
     void setGameOverStatus(string gameTextMessage, AudioClip sfx)
     {
         isGameOver = true;
         AudioSource.PlayClipAtPoint(sfx, Camera.main.transform.position);
+        status.SetActive(true);
         statusText.text = gameTextMessage;
         statusText.enabled = true;
     }
 
     public void LoadCurrentLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadNextLevel()

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public static class PlayerStats
+{
+    public static int Health { get; set; }
+}
+
 public class PlayerBehavior : MonoBehaviour
 {
     CharacterController _controller;
@@ -11,12 +16,12 @@ public class PlayerBehavior : MonoBehaviour
     Vector3 input, moveDirection;
     public Slider healthSlide;
     Animator anim;
-    int playerHealth = 100;
     public AudioClip sword;
     public AudioClip hurt;
     public AudioClip dash;
     public bool attacking = false;
     public float dashSpeed = 50f;
+
 
 
     // Start is called before the first frame update
@@ -37,7 +42,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             attacking = false;
         }
-        if (playerHealth > 0)
+        if (PlayerStats.Health > 0)
         {
             Move();
             Dash();
@@ -81,17 +86,18 @@ public class PlayerBehavior : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        if (playerHealth > dmg)
+        if (PlayerStats.Health > dmg)
         {
-            playerHealth = playerHealth - dmg;
+            PlayerStats.Health = PlayerStats.Health - dmg;
             AudioSource.PlayClipAtPoint(hurt, transform.position);
-            healthSlide.value = playerHealth;
+            healthSlide.value = PlayerStats.Health;
+
 
         }
         else
         {
-            playerHealth = 0;
-            healthSlide.value = playerHealth;
+            PlayerStats.Health = 0;
+            healthSlide.value = PlayerStats.Health;
             FindObjectOfType<LevelManager>().LevelLost();
         }
     }

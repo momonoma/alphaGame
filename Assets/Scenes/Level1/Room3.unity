@@ -354,6 +354,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_CyborgNinja_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: alertDistance
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: attackDistance
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
 --- !u!1001 &114589720
@@ -763,6 +775,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_CyborgNinja_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: bulletSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: alertDistance
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: attackDistance
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
 --- !u!1001 &254433736
@@ -821,6 +849,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5692228392240515069, guid: f435fe6378b496345835ded16a4bfa9b, type: 3}
+      propertyPath: status
+      value: 
+      objectReference: {fileID: 594072177}
+    - target: {fileID: 5692228392240515069, guid: f435fe6378b496345835ded16a4bfa9b, type: 3}
       propertyPath: statusText
       value: 
       objectReference: {fileID: 594072175}
@@ -833,6 +865,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3201207226298273561, guid: 6a8012369f08f05489ebc619ce21c517, type: 3}
+      propertyPath: range
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201207226298273561, guid: 6a8012369f08f05489ebc619ce21c517, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3697055023636888987, guid: 6a8012369f08f05489ebc619ce21c517, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -949,6 +989,18 @@ PrefabInstance:
     - target: {fileID: 4115576394212249013, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
       propertyPath: m_Name
       value: Character_CyborgNinja_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: alertDistance
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127626431920236914, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
+      propertyPath: attackDistance
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9531132c95a51484ba58f714af1bbc28, type: 3}
@@ -1078,7 +1130,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6161852572838447264, guid: 935dcf3033d9dbd4f8043421ed38eff4, type: 3}
   m_PrefabInstance: {fileID: 594072174}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 594072177}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -1095,6 +1147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &594072177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6161852572838447266, guid: 935dcf3033d9dbd4f8043421ed38eff4, type: 3}
+  m_PrefabInstance: {fileID: 594072174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &840275290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1161,6 +1218,14 @@ PrefabInstance:
     - target: {fileID: 1376596009539018453, guid: ae828ca29e992814dae34bafa63e6696, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Drone_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133791089819080157, guid: ae828ca29e992814dae34bafa63e6696, type: 3}
+      propertyPath: range
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133791089819080157, guid: ae828ca29e992814dae34bafa63e6696, type: 3}
+      propertyPath: moveSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae828ca29e992814dae34bafa63e6696, type: 3}
