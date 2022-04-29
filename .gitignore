@@ -17,6 +17,7 @@ alphaGame/[Bb]uilds/*
 alphaGame/[Ll]ogs/*
 alphaGame/[Mm]emoryCaptures/*
 alphaGame/[Uu]serSettings/*
+Recordings
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !./LevelPrototypeFP2/[Aa]ssets/**/*.meta
