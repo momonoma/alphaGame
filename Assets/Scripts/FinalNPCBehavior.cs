@@ -19,11 +19,11 @@ public class FinalNPCBehavior : MonoBehaviour
     public GameObject prefab;
     int TotalHealth = 150;
     public Slider health;
-    public int attackDist = 10;
+    public int attackDist = 40;
     bool inShootingLoop = false;
     bool isShooting = false;
-    bool inTravelingLoop = false;
-    bool isTraveling = false;
+    public AudioClip warp;
+
 
     public enum FSMstate
     {
@@ -73,8 +73,8 @@ public class FinalNPCBehavior : MonoBehaviour
             }
             else
             {
-                anim.SetInteger("NPCanim", 2);
-                FindObjectOfType<LevelManager>().LoadLevelDelay(10);
+                anim.SetInteger("NPCanim", 3);
+                FindObjectOfType<LevelManager>().LoadLevelDelay(5);
             }
         }
     }
@@ -99,6 +99,7 @@ public class FinalNPCBehavior : MonoBehaviour
     {
         anim.SetInteger("NPCanim", 2);
         transform.position = wanders[currentDestIndex].transform.position;
+        AudioSource.PlayClipAtPoint(warp, transform.position);
         currentDestIndex = (currentDestIndex + 1) % wanders.Length;
         currentState = FSMstate.IDLE;
     }
@@ -110,7 +111,6 @@ public class FinalNPCBehavior : MonoBehaviour
 
         if (!inShootingLoop)
             StartCoroutine("EnemyAttack");
-        currentState = FSMstate.DISAPPEAR;
 
     }
 
@@ -125,55 +125,28 @@ public class FinalNPCBehavior : MonoBehaviour
     {
         inShootingLoop = true; //we're running, set this to make sure we don't start again
         yield return new WaitForSeconds(1);
-        float radius = 1f;
         Attack();
         isShooting = true;
         yield return new WaitForSeconds(1);
         isShooting = false;
         inShootingLoop = false; //we're done, set this to allow another iteration
+        yield return new WaitForSeconds(5);
+        currentState = FSMstate.DISAPPEAR;
     }
 
     void Attack()
     {
-        Vector3 center = transform.position;
-        for (int i = 0; i < numObjects; i++)
-        {
-            Vector3 pos = RandomCircle(center, 5.0f);
-            Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
-            Instantiate(prefab, pos, rot);
+        var missile = Instantiate(prefab, gameObject.transform.position, gameObject.transform.rotation);
 
-        }
     }
 
-    Vector3 RandomCircle(Vector3 center, float radius)
-    {
-        float ang = Random.value * 360;
-        Vector3 pos;
-        pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
-        pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-        pos.z = center.z;
-        return pos;
-    }
+
 
     IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
 
         currentState = FSMstate.DISAPPEAR;
-    }
-
-    IEnumerator TravelOnce()
-    {
-        inTravelingLoop = true; //we're running, set this to make sure we don't start again
-        yield return new WaitForSeconds(1);
-        float radius = 1f;
-        transform.position = wanders[currentDestIndex].transform.position;
-        currentDestIndex = (currentDestIndex + 1) % wanders.Length;
-        isTraveling = true;
-        yield return new WaitForSeconds(1);
-        isTraveling = false;
-        inTravelingLoop = false; //we're done, set this to allow another iteration
-        currentState = FSMstate.IDLE;
     }
 
 
