@@ -38,10 +38,6 @@ public class LevelManager : MonoBehaviour
         if (!isGameOver)
         {
             int enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-            if (gameWon)
-            {
-                LevelWon();
-            }
             if (enemies == 0)
             {
                 enemiesDead = true;
@@ -92,6 +88,11 @@ public class LevelManager : MonoBehaviour
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadLevelDelay(int delay)
+    {
+        Invoke("LoadNextLevel", delay);
     }
 
 }

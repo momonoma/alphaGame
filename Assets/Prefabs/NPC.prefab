@@ -1328,7 +1328,7 @@ GameObject:
   - component: {fileID: 6443974442356988801}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: Vi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1417,6 +1417,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   dialogueEnd: 0
+  cont: {fileID: 0}
   currentState: 0
 --- !u!114 &6443974442356988806
 MonoBehaviour:

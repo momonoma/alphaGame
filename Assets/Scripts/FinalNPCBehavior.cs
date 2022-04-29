@@ -13,9 +13,18 @@ public class FinalNPCBehavior : MonoBehaviour
     float distanceToPlayer;
     public GameObject[] wanders;
     int currentDestIndex = 0;
+    public GameObject bossText;
 
     public int numObjects = 4;
     public GameObject prefab;
+    int TotalHealth = 150;
+    public Slider health;
+    public int attackDist = 10;
+    bool inShootingLoop = false;
+    bool isShooting = false;
+    bool inTravelingLoop = false;
+    bool isTraveling = false;
+
     public enum FSMstate
     {
         IDLE,
@@ -44,27 +53,43 @@ public class FinalNPCBehavior : MonoBehaviour
         }
         if (dialogueEnd == true)
         {
-            distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-            switch (currentState)
+            bossText.SetActive(true);
+            if (TotalHealth > 0)
             {
-                case FSMstate.IDLE:
-                    UpdateIdleState();
-                    break;
-                case FSMstate.DISAPPEAR:
-                    UpdateTravelState();
-                    break;
-                case FSMstate.ATTACK:
-                    UpdateAttackState();
-                    break;
+                distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+                switch (currentState)
+                {
+                    case FSMstate.IDLE:
+                        UpdateIdleState();
+                        break;
+                    case FSMstate.DISAPPEAR:
+                        UpdateTravelState();
+                        break;
+                    case FSMstate.ATTACK:
+                        UpdateAttackState();
+                        break;
+                }
+            }
+            else
+            {
+                anim.SetInteger("NPCanim", 2);
+                FindObjectOfType<LevelManager>().LoadLevelDelay(10);
             }
         }
+    }
+    public void TakeDamage(int dmg)
+    {
+        int tempHealth = TotalHealth - dmg;
+        TotalHealth = tempHealth;
+        health.value = TotalHealth;
+        Debug.Log(TotalHealth);
     }
 
     void UpdateIdleState()
     {
         anim.SetInteger("NPCanim", 0);
-        if (distanceToPlayer <= 40)
+        if (distanceToPlayer <= attackDist)
         {
             currentState = FSMstate.ATTACK;
         }
@@ -83,9 +108,9 @@ public class FinalNPCBehavior : MonoBehaviour
         anim.SetInteger("NPCanim", 1);
         FaceTarget(player.transform.position);
 
-        StartCoroutine("AttackOnce");
-
-        StartCoroutine("ExecuteAfterTime", 5);
+        if (!inShootingLoop)
+            StartCoroutine("EnemyAttack");
+        currentState = FSMstate.DISAPPEAR;
 
     }
 
@@ -96,17 +121,30 @@ public class FinalNPCBehavior : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
     }
 
-    void EnemyAttack()
+    IEnumerator EnemyAttack()
+    {
+        inShootingLoop = true; //we're running, set this to make sure we don't start again
+        yield return new WaitForSeconds(1);
+        float radius = 1f;
+        Attack();
+        isShooting = true;
+        yield return new WaitForSeconds(1);
+        isShooting = false;
+        inShootingLoop = false; //we're done, set this to allow another iteration
+    }
+
+    void Attack()
     {
         Vector3 center = transform.position;
         for (int i = 0; i < numObjects; i++)
         {
             Vector3 pos = RandomCircle(center, 5.0f);
             Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
-            var bullet = Instantiate(prefab, pos, rot);
-            
+            Instantiate(prefab, pos, rot);
+
         }
     }
+
     Vector3 RandomCircle(Vector3 center, float radius)
     {
         float ang = Random.value * 360;
@@ -124,9 +162,19 @@ public class FinalNPCBehavior : MonoBehaviour
         currentState = FSMstate.DISAPPEAR;
     }
 
-    IEnumerator AttackOnce()
+    IEnumerator TravelOnce()
     {
-        EnemyAttack();
-        yield return new WaitForSeconds(5);
+        inTravelingLoop = true; //we're running, set this to make sure we don't start again
+        yield return new WaitForSeconds(1);
+        float radius = 1f;
+        transform.position = wanders[currentDestIndex].transform.position;
+        currentDestIndex = (currentDestIndex + 1) % wanders.Length;
+        isTraveling = true;
+        yield return new WaitForSeconds(1);
+        isTraveling = false;
+        inTravelingLoop = false; //we're done, set this to allow another iteration
+        currentState = FSMstate.IDLE;
     }
+
+
 }
