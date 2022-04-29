@@ -21,13 +21,14 @@ public class PlayerBehavior : MonoBehaviour
     public AudioClip dash;
     public bool attacking = false;
     public float dashSpeed = 50f;
+    bool playerDead = false;
+    int playerHealth = 100;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerStats.Health = 100;
         _controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }
@@ -43,7 +44,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             attacking = false;
         }
-        if (PlayerStats.Health > 0)
+        if (playerHealth > 0)
         {
             Move();
             Dash();
@@ -87,19 +88,20 @@ public class PlayerBehavior : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        if (PlayerStats.Health > dmg)
+        if (playerHealth > dmg && !playerDead)
         {
-            PlayerStats.Health = PlayerStats.Health - dmg;
+            playerHealth = playerHealth - dmg;
             AudioSource.PlayClipAtPoint(hurt, transform.position);
-            healthSlide.value = PlayerStats.Health;
+            healthSlide.value = playerHealth;
 
 
         }
-        else
+        else if (!playerDead)
         {
-            PlayerStats.Health = 0;
-            healthSlide.value = PlayerStats.Health;
+            playerHealth = 0;
+            healthSlide.value = playerHealth;
             FindObjectOfType<LevelManager>().LevelLost();
+            playerDead = true;
         }
     }
 

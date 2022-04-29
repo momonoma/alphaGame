@@ -1619,9 +1619,10 @@ MonoBehaviour:
   - {fileID: 1637387687}
   bossText: {fileID: 34575966}
   numObjects: 5
-  prefab: {fileID: 9033077153667481629, guid: 63b5bb1c14088f44b81610b8813b98c8, type: 3}
+  prefab: {fileID: 2329911746068897352, guid: 8c7b3a02f58afb54c8760faa9b613e3a, type: 3}
   health: {fileID: 41666049}
   attackDist: 10
+  warp: {fileID: 8300000, guid: 7d7f3c03ae0817d4999f4d9eabcf47c7, type: 3}
   currentState: 0
 --- !u!54 &2130309622
 Rigidbody:
