@@ -27,6 +27,7 @@ public class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerStats.Health = 100;
         _controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }

@@ -41,6 +41,8 @@ public class DialogManager : MonoBehaviour
     {
         Debug.Log("Ending convo");
         textBox.SetActive(false);
+        FindObjectOfType<FinalNPCBehavior>().dialogueEnd = true;
         FindObjectOfType<NPCBehavior>().dialogueEnd = true;
+
     }
 }
