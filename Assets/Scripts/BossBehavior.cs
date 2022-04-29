@@ -12,6 +12,9 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private float cooldown = 5;
     private float cooldownTimer;
     public Slider health;
+    public GameObject finalExit;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,8 @@ public class BossBehavior : MonoBehaviour
         else
         {
             anim.SetInteger("AttackPattern", 3);
-            LevelManager.bossDead = true;
+            finalExit.SetActive(true);
+            
         }
     }
 

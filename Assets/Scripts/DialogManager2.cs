@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogManager : MonoBehaviour
+public class DialogManager2 : MonoBehaviour
 {
     public GameObject textBox;
     public Text nameText;
@@ -19,7 +19,7 @@ public class DialogManager : MonoBehaviour
     {
         nameText.text = dialogue.name;
         sentences.Clear();
-        foreach(string sentence in dialogue.dialog)
+        foreach (string sentence in dialogue.dialog)
         {
             sentences.Enqueue(sentence);
         }
@@ -41,7 +41,7 @@ public class DialogManager : MonoBehaviour
     {
         Debug.Log("Ending convo");
         textBox.SetActive(false);
-        FindObjectOfType<NPCBehavior>().dialogueEnd = true;
+        FindObjectOfType<FinalNPCBehavior>().dialogueEnd = true;
 
     }
 }
