@@ -9,9 +9,7 @@ public class LevelManager : MonoBehaviour
 
     public static bool isGameOver = false;
     public static bool enemiesDead = false;
-    public static bool bossDead = false;
     public static bool playerDead = false;
-    public GameObject finalExit;
     public AudioClip win;
     public AudioClip lose;
     public Text statusText;
@@ -41,11 +39,6 @@ public class LevelManager : MonoBehaviour
             if (enemies == 0)
             {
                 enemiesDead = true;
-            }
-
-            if (bossDead)
-            {
-                finalExit.SetActive(true);
             }
 
             if (playerDead)

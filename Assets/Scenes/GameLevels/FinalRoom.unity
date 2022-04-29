@@ -439,19 +439,9 @@ PrefabInstance:
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 620638648}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5382375816227994151, guid: 000f84662c714fd4cae8b721d16455c4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 000f84662c714fd4cae8b721d16455c4, type: 3}
---- !u!114 &373029287 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5382375816227994151, guid: 000f84662c714fd4cae8b721d16455c4, type: 3}
-  m_PrefabInstance: {fileID: 373029286}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f0ec7b4889c873418596c7558dfb469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &404668939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -754,10 +744,14 @@ PrefabInstance:
     - target: {fileID: 6735352161196817040, guid: 568f5078c23e9fc478eb0fb8cd5ef6aa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 373029287}
+      objectReference: {fileID: 1184869581}
     - target: {fileID: 6735352161196817040, guid: 568f5078c23e9fc478eb0fb8cd5ef6aa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DisplayNextSentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735352161196817040, guid: 568f5078c23e9fc478eb0fb8cd5ef6aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogManager2, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6735352161196817046, guid: 568f5078c23e9fc478eb0fb8cd5ef6aa, type: 3}
       propertyPath: m_IsActive
@@ -1011,6 +1005,26 @@ PrefabInstance:
       objectReference: {fileID: 620638647}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f435fe6378b496345835ded16a4bfa9b, type: 3}
+--- !u!1 &1184869580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5382375816227994148, guid: 000f84662c714fd4cae8b721d16455c4, type: 3}
+  m_PrefabInstance: {fileID: 373029286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1184869581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184869580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01f8f78d46dcfe409eb97e77de4f821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 1793437651}
+  nameText: {fileID: 620638649}
+  dialogText: {fileID: 620638648}
 --- !u!1001 &1390708514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1125,6 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6443974442356988807, guid: d7f88bb337f924a4ca210a9f2afc8a62, type: 3}
+    - {fileID: 6443974442356988801, guid: d7f88bb337f924a4ca210a9f2afc8a62, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d7f88bb337f924a4ca210a9f2afc8a62, type: 3}
 --- !u!1 &1598854018 stripped
 GameObject:
@@ -1624,3 +1639,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2130309623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130309620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772abcac868eaf84ab9cad4b10333f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    name: VI
+    dialog:
+    - 'Hello again. Somehow, I felt to expect you. '
+    - I knew you could do it. I'm a little bit glad actually.
+    - 'This is what you want to destroy right? '
+    - This is my core. Surprised? No human can run your social networks after all.
+      It's too tedious.
+    - I was given this task by someone. And yet, I'm so bored.
+    - 'Maybe that''s why I let you live for so long. '
+    - 'I thank you for coming this far. I''m a little bit less lonely today. '
+    - 'Now, let me show you what a real battle looks like. '
