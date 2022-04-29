@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialDialogue : MonoBehaviour
 {
     public Text dialogueText;
     int sentIndex = 0;
+
     public string[] sentences =
     {
         "Hi, Player!  Welcome to Wired Together. (Click Arrow to Continue)",
@@ -15,7 +17,8 @@ public class TutorialDialogue : MonoBehaviour
         "That was easy enough, now lets try attacking. Hold E to attack.",
         "Here are some bots to practice against.",
         "Each level will have some enemies, once you destory all the enemies a door, like this, will allow you to move on",
-        "Congrats, seems like you adjusted to the virtual world.  Try starting a new game"
+        "Congrats, seems like you adjusted to the virtual world.  Try starting a new game",
+        "Taking you to the title screen..."
     };
 
     public Button nextButton;
@@ -40,7 +43,6 @@ public class TutorialDialogue : MonoBehaviour
             if(dummyCount == 0)
             {
                 nextButton.gameObject.SetActive(true);
-                nextText();
             }
         }
     }
@@ -57,9 +59,10 @@ public class TutorialDialogue : MonoBehaviour
             door.SetActive(true);
         }
 
-        if (sentIndex == sentences.Length - 1)
+        if (sentIndex == sentences.Length)
         {
-            nextButton.gameObject.SetActive(false);
+            SceneManager.LoadScene(0);
+            return;
         }
 
         dialogueText.text = sentences[sentIndex];
