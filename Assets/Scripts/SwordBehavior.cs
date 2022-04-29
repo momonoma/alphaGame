@@ -39,5 +39,9 @@ public class SwordBehavior : MonoBehaviour
         {
             FindObjectOfType<BossBehavior>().TakeDamage(10);
         }
+        if (other.CompareTag("Vi"))
+        {
+            FindObjectOfType<FinalNPCBehavior>().TakeDamage(10);
+        }
     }
 }

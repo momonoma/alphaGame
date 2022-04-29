@@ -10,6 +10,7 @@ public class NPCBehavior : MonoBehaviour
     public GameObject text;
     public GameObject[] enemies;
     public bool dialogueEnd = false;
+    public GameObject cont;
 
     public enum FSMstate
     {
@@ -34,6 +35,7 @@ public class NPCBehavior : MonoBehaviour
         playerDistance = Vector3.Distance(transform.position, player.transform.position);
         if (playerDistance < 10)
         {
+            cont.SetActive(true);
             transform.LookAt(player);
         }
         if (dialogueEnd == true)
